@@ -157,6 +157,7 @@ MonoBehaviour:
   gridParent: {fileID: 145508783}
   cellPool: {fileID: 145508784}
   cellSpacing: 10
+  animationHandler: {fileID: 145508785}
 --- !u!4 &145508783
 Transform:
   m_ObjectHideFlags: 0
@@ -552,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesNumber: 10
   particlePool: {fileID: 544546504}
-  lifetime: 4
+  lifetime: 2
   velocityRange: {x: -400, y: 400}
   animationHandler: {fileID: 544546505}
 --- !u!4 &544546503

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95792cebf1e815d4dbb823eb59265bfe, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  rows: 5
-  columns: 5
+  rows: 3
+  columns: 3
   allowedSpriteGroups:
   - {fileID: 11400000, guid: fac6b181235adff4eb1573d4b93e69f6, type: 2}
   - {fileID: 11400000, guid: 07d312e3af3902144963c08b4637f507, type: 2}

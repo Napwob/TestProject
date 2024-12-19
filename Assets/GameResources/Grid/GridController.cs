@@ -6,14 +6,9 @@ public class GridController : MonoBehaviour
     [SerializeField] private Transform gridParent;
     [SerializeField] private ObjectPool cellPool;
     [SerializeField] private float cellSpacing = 10f;
-    private AnimationHandler animationHandler;
+    [SerializeField] private AnimationHandler animationHandler;
 
-    private void Awake()
-    {
-        animationHandler = GetComponent<AnimationHandler>();
-    }
-
-    public List<Sprite> GenerateGrid(LevelData levelData, System.Action<CellController> onCellClicked)
+    public List<Sprite> GenerateGrid(LevelData levelData, System.Action<CellController> onCellClicked, bool isInitialLoad = false)
     {
         ClearGrid();
 
@@ -41,11 +36,9 @@ public class GridController : MonoBehaviour
 
                 RectTransform rectTransform = cell.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(
-                    (-indentCol)/2 + column * (cellWidth + cellSpacing),
-                    indentRow/2 + (- row) * (cellHeight + cellSpacing)
+                    (-indentCol) / 2 + column * (cellWidth + cellSpacing),
+                    indentRow / 2 + (-row) * (cellHeight + cellSpacing)
                 );
-
-                animationHandler.BounceIn(rectTransform);
 
                 Sprite sprite = availableSprites[Random.Range(0, availableSprites.Count)];
                 availableSprites.Remove(sprite);
@@ -53,6 +46,11 @@ public class GridController : MonoBehaviour
 
                 CellController cellController = cell.GetComponent<CellController>();
                 cellController.Setup(sprite, onCellClicked);
+
+                if (isInitialLoad)
+                {
+                    animationHandler.BounceIn(rectTransform);
+                }
             }
         }
 

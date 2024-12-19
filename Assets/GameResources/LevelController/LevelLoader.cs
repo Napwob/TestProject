@@ -23,10 +23,10 @@ public class LevelLoader : MonoBehaviour
         restartButton.SetActive(false);
         fadeOverlay.enabled = false;
         fadeOverlay.color = new Color(0, 0, 0, 0);
-        LoadLevel(0);
+        LoadLevel(0, true);
     }
 
-    public void LoadLevel(int index)
+    public void LoadLevel(int index, bool isInitialLoad = false)
     {
         if (index >= levels.Count)
         {
@@ -37,18 +37,21 @@ public class LevelLoader : MonoBehaviour
         currentLevelIndex = index;
         LevelData levelData = levels[index];
 
-        List<Sprite> gridSprites = levelController.InitializeLevel(levelData, OnCellClicked);
+        List<Sprite> gridSprites = levelController.InitializeLevel(levelData, OnCellClicked, isInitialLoad);
 
         Sprite correctAnswer = gridSprites[Random.Range(0, gridSprites.Count)];
         levelController.SetCorrectAnswer(correctAnswer);
 
         taskDisplay.text = $"Find {correctAnswer.name}";
-        animationHandler.FadeInText(taskDisplay);
+        if (isInitialLoad)
+        {
+            animationHandler.FadeInText(taskDisplay);
+        }
     }
 
     private void OnCellClicked(CellController cell)
     {
-        if (levelController.CheckAnswer(cell))
+        if (levelController.isClickedCellCorrect(cell))
         {
             LoadLevel(currentLevelIndex + 1);
         }
@@ -67,7 +70,7 @@ public class LevelLoader : MonoBehaviour
         animationHandler.FadeInImage(fadeOverlay, 1f, () =>
         {
             restartButton.SetActive(false);
-            LoadLevel(0);
+            LoadLevel(0, true);
             animationHandler.FadeOutImage(fadeOverlay);
             fadeOverlay.enabled = false;
         });

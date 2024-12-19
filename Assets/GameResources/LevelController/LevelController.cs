@@ -6,9 +6,9 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GridController gridController;
     [SerializeField] private AnswerChecker answerChecker;
 
-    public List<Sprite> InitializeLevel(LevelData levelData, System.Action<CellController> onCellClicked)
+    public List<Sprite> InitializeLevel(LevelData levelData, System.Action<CellController> onCellClicked, bool isInitialLoad = false)
     {
-        return gridController.GenerateGrid(levelData, onCellClicked);
+        return gridController.GenerateGrid(levelData, onCellClicked, isInitialLoad);
     }
 
     public void SetCorrectAnswer(Sprite correctAnswer)
@@ -16,9 +16,8 @@ public class LevelController : MonoBehaviour
         answerChecker.SetCorrectAnswer(correctAnswer);
     }
 
-    public bool CheckAnswer(CellController cell)
+    public bool isClickedCellCorrect(CellController cell)
     {
         return answerChecker.CheckAnswer(cell);
     }
 }
-
