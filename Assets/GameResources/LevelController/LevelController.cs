@@ -1,23 +1,28 @@
-using UnityEngine;
-using System.Collections.Generic;
-
-public class LevelController : MonoBehaviour
+namespace AmayaSoft.Level
 {
-    [SerializeField] private GridController gridController;
-    [SerializeField] private AnswerChecker answerChecker;
+    using UnityEngine;
+    using System.Collections.Generic;
+    using AmayaSoft.Cell;
+    using AmayaSoft.Grid;
 
-    public List<Sprite> InitializeLevel(LevelData levelData, System.Action<CellController> onCellClicked, bool isInitialLoad = false)
+    public class LevelController : MonoBehaviour
     {
-        return gridController.GenerateGrid(levelData, onCellClicked, isInitialLoad);
-    }
+        [SerializeField] private GridController gridController;
+        [SerializeField] private AnswerChecker answerChecker;
 
-    public void SetCorrectAnswer(Sprite correctAnswer)
-    {
-        answerChecker.SetCorrectAnswer(correctAnswer);
-    }
+        public List<Sprite> InitializeLevel(LevelData levelData, System.Action<CellController> onCellClicked, bool isInitialLoad = false)
+        {
+            return gridController.GenerateGrid(levelData, onCellClicked, isInitialLoad);
+        }
 
-    public bool isClickedCellCorrect(CellController cell)
-    {
-        return answerChecker.CheckAnswer(cell);
+        public void SetCorrectAnswer(Sprite correctAnswer)
+        {
+            answerChecker.SetCorrectAnswer(correctAnswer);
+        }
+
+        public bool isClickedCellCorrect(CellController cell)
+        {
+            return answerChecker.CheckAnswer(cell);
+        }
     }
 }

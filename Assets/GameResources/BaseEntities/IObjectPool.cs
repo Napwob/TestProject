@@ -1,6 +1,9 @@
-using UnityEngine;
-
-public interface IObjectPool<T> where T : class
+namespace AmayaSoft.ObjectPools
 {
-    T GetPooledObject();
+    using UnityEngine;
+
+    public interface IObjectPool<T> where T : class
+    {
+        T GetPooledObject();
+    }
 }

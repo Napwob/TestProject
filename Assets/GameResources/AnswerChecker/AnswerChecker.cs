@@ -1,37 +1,42 @@
-using UnityEngine;
-
-public class AnswerChecker : MonoBehaviour
+namespace AmayaSoft.Cell
 {
-    [SerializeField] private UIParticles uiParticles;
-    private AnimationHandler animationHandler;
+    using AmayaSoft.DGAnimations;
+    using AmayaSoft.Particles;
+    using UnityEngine;
 
-    private Sprite correctAnswer;
-
-    private void Awake()
+    public class AnswerChecker : MonoBehaviour
     {
-        animationHandler = GetComponent<AnimationHandler>();
-    }
+        [SerializeField] private UIParticles uiParticles;
+        private AnimationHandler animationHandler;
 
-    public void SetCorrectAnswer(Sprite answer)
-    {
-        correctAnswer = answer;
-    }
+        private Sprite correctAnswer;
 
-    public bool CheckAnswer(CellController cell)
-    {
-        if (cell != null && cell.GetSprite().name == correctAnswer.name)
+        private void Awake()
         {
-            animationHandler.Bounce(cell.transform);
-
-            Vector2 cellPosition = cell.transform.localPosition;
-            uiParticles.SpawnParticles(cellPosition);
-
-            return true;
+            animationHandler = GetComponent<AnimationHandler>();
         }
-        else
+
+        public void SetCorrectAnswer(Sprite answer)
         {
-            animationHandler.Shake(cell.transform);
-            return false;
+            correctAnswer = answer;
+        }
+
+        public bool CheckAnswer(CellController cell)
+        {
+            if (cell != null && cell.GetSprite().name == correctAnswer.name)
+            {
+                animationHandler.Bounce(cell.transform);
+
+                Vector2 cellPosition = cell.transform.localPosition;
+                uiParticles.SpawnParticles(cellPosition);
+
+                return true;
+            }
+            else
+            {
+                animationHandler.Shake(cell.transform);
+                return false;
+            }
         }
     }
 }

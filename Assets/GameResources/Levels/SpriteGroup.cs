@@ -1,10 +1,13 @@
-using UnityEngine;
-using System.Collections.Generic;
-
-[CreateAssetMenu(fileName = "SpriteGroup", menuName = "Game/SpriteGroup")]
-public class SpriteGroup : ScriptableObject
+namespace AmayaSoft.Cell
 {
-    [SerializeField] private List<Sprite> sprites;
+    using UnityEngine;
+    using System.Collections.Generic;
 
-    public List<Sprite> Sprites => sprites;
+    [CreateAssetMenu(fileName = "SpriteGroup", menuName = "Game/SpriteGroup")]
+    public class SpriteGroup : ScriptableObject
+    {
+        [SerializeField] private List<Sprite> sprites;
+
+        public List<Sprite> Sprites => sprites;
+    }
 }

@@ -1,43 +1,45 @@
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ObjectPool : MonoBehaviour, IObjectPool<GameObject>
+namespace AmayaSoft.ObjectPools
 {
-    [SerializeField, Range(1,15)] private int initialPoolSize;
-    [SerializeField] private GameObject prefab;
-    private List<GameObject> pool = new List<GameObject>();
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    private void Start()
+    public class ObjectPool : MonoBehaviour, IObjectPool<GameObject>
     {
-        initializePool();
-    }
+        [SerializeField, Range(1, 15)] private int initialPoolSize;
+        [SerializeField] private GameObject prefab;
+        private List<GameObject> pool = new List<GameObject>();
 
-    private GameObject CreateNewInstance()
-    {
-        GameObject instance = Instantiate(prefab);
-        instance.SetActive(false);
-        pool.Add(instance);
-        return instance;
-    }
-
-    public GameObject GetPooledObject()
-    {
-        foreach (GameObject obj in pool)
+        private void Start()
         {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
-            }
+            initializePool();
         }
-        return CreateNewInstance();
-    }
 
-    public void initializePool()
-    {
-        for (int i = 0; i < initialPoolSize; i++)
+        private GameObject CreateNewInstance()
         {
-            CreateNewInstance();
+            GameObject instance = Instantiate(prefab);
+            instance.SetActive(false);
+            pool.Add(instance);
+            return instance;
+        }
+
+        public GameObject GetPooledObject()
+        {
+            foreach (GameObject obj in pool)
+            {
+                if (!obj.activeInHierarchy)
+                {
+                    return obj;
+                }
+            }
+            return CreateNewInstance();
+        }
+
+        public void initializePool()
+        {
+            for (int i = 0; i < initialPoolSize; i++)
+            {
+                CreateNewInstance();
+            }
         }
     }
 }
-

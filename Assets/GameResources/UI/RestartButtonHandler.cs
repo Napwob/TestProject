@@ -1,29 +1,32 @@
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.UI;
-
-[RequireComponent(typeof(Button))]
-public class RestartButtonHandler : MonoBehaviour
+namespace AmayaSoft.Uti
 {
-    [SerializeField] private LevelLoader levelLoader;
-    public Button ButtonInstance => button;
+    using AmayaSoft.Level;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    protected Button button = default;
+    [RequireComponent(typeof(Button))]
+    public class RestartButtonHandler : MonoBehaviour
+    {
+        [SerializeField] private LevelLoader levelLoader;
+        public Button ButtonInstance => button;
 
-    protected virtual void Awake()
-    {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnRestartButtonPressed);
-    }
-    public void OnRestartButtonPressed()
-    {
-        if (levelLoader != null)
+        protected Button button = default;
+
+        protected virtual void Awake()
         {
-            levelLoader.RestartGame();
+            button = GetComponent<Button>();
+            button.onClick.AddListener(OnRestartButtonPressed);
         }
-        else
+        public void OnRestartButtonPressed()
         {
-            Debug.LogError("LevelLoader is not assigned in RestartButtonHandler.");
+            if (levelLoader != null)
+            {
+                levelLoader.RestartGame();
+            }
+            else
+            {
+                Debug.LogError("LevelLoader is not assigned in RestartButtonHandler.");
+            }
         }
     }
 }

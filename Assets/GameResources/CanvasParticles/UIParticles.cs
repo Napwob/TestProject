@@ -1,58 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
-
-public class UIParticles : MonoBehaviour
+namespace AmayaSoft.Particles
 {
-    [Header("Particle Settings")]
-    [SerializeField, Range(0, 30)] private int particlesNumber = 20;
-    [SerializeField] private ObjectPool particlePool; 
-    [SerializeField] private float lifetime = 2f;        
-    [SerializeField] private Vector2 velocityRange = new Vector2(-50, 50); 
+    using UnityEngine;
+    using UnityEngine.UI;
+    using DG.Tweening;
+    using AmayaSoft.ObjectPools;
+    using AmayaSoft.DGAnimations;
 
-    [Header("Animation Handler")]
-    [SerializeField] private AnimationHandler animationHandler; 
-
-    public void SpawnParticles(Vector2 position)
+    public class UIParticles : MonoBehaviour
     {
-        for (int i = 0; i < particlesNumber; i++)
+        [Header("Particle Settings")]
+        [SerializeField, Range(0, 30)] private int particlesNumber = 20;
+        [SerializeField] private ObjectPool particlePool;
+        [SerializeField] private float lifetime = 2f;
+        [SerializeField] private Vector2 velocityRange = new Vector2(-50, 50);
+
+        [Header("Animation Handler")]
+        [SerializeField] private AnimationHandler animationHandler;
+
+        public void SpawnParticles(Vector2 position)
         {
-            GameObject particle = particlePool.GetPooledObject();
-            if (particle != null)
+            for (int i = 0; i < particlesNumber; i++)
             {
-                particle.transform.SetParent(gameObject.transform, false);
-                particle.SetActive(true);
+                GameObject particle = particlePool.GetPooledObject();
+                if (particle != null)
+                {
+                    particle.transform.SetParent(gameObject.transform, false);
+                    particle.SetActive(true);
 
-                RectTransform rectTransform = particle.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = position;
+                    RectTransform rectTransform = particle.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = position;
 
-                Vector2 randomVelocity = new Vector2(
-                    Random.Range(velocityRange.x, velocityRange.y),
-                    Random.Range(velocityRange.x, velocityRange.y)
-                );
+                    Vector2 randomVelocity = new Vector2(
+                        Random.Range(velocityRange.x, velocityRange.y),
+                        Random.Range(velocityRange.x, velocityRange.y)
+                    );
 
-                AnimateParticle(particle, rectTransform, randomVelocity);
+                    AnimateParticle(particle, rectTransform, randomVelocity);
+                }
             }
         }
-    }
 
-    private void AnimateParticle(GameObject particle, RectTransform rectTransform, Vector2 velocity)
-    {
-        Image image = particle.GetComponent<Image>();
-        Color initialColor = image.color;
+        private void AnimateParticle(GameObject particle, RectTransform rectTransform, Vector2 velocity)
+        {
+            Image image = particle.GetComponent<Image>();
+            Color initialColor = image.color;
 
-        animationHandler.Bounce(rectTransform);
+            animationHandler.Bounce(rectTransform);
 
-        rectTransform.DOAnchorPos(rectTransform.anchoredPosition + velocity * lifetime, lifetime)
-            .SetEase(Ease.OutQuad)
-            .OnComplete(() =>
-            {
-                particle.SetActive(false);
-                image.color = initialColor;
-            });
+            rectTransform.DOAnchorPos(rectTransform.anchoredPosition + velocity * lifetime, lifetime)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    particle.SetActive(false);
+                    image.color = initialColor;
+                });
 
-        animationHandler.FadeOutImage(image);
+            animationHandler.FadeOutImage(image);
+        }
     }
 }
