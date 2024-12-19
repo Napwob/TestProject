@@ -1,40 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] private List<LevelData> levels;
     [SerializeField] private GridController gridController;
     [SerializeField] private AnswerChecker answerChecker;
-    [SerializeField] private Text taskDisplay;
 
-    private int currentLevelIndex;
-
-    private void Start()
+    public List<Sprite> InitializeLevel(LevelData levelData, System.Action<CellController> onCellClicked)
     {
-        LoadLevel(0);
+        return gridController.GenerateGrid(levelData, onCellClicked);
     }
 
-    public void LoadLevel(int index)
+    public void SetCorrectAnswer(Sprite correctAnswer)
     {
-        if (index >= levels.Count)
-        {
-            Debug.Log("No more levels to load.");
-            return;
-        }
-
-        currentLevelIndex = index;
-        LevelData levelData = levels[index];
-        gridController.GenerateGrid(levelData, OnCellClicked);
-
-        Sprite correctAnswer = levelData.AllowedSpriteGroups[0].Sprites[0]; 
         answerChecker.SetCorrectAnswer(correctAnswer);
-        taskDisplay.text = $"Find {correctAnswer.name}";
     }
 
-    private void OnCellClicked(CellController cell)
+    public bool CheckAnswer(CellController cell)
     {
-        answerChecker.CheckAnswer(cell);
+        return answerChecker.CheckAnswer(cell);
     }
 }
