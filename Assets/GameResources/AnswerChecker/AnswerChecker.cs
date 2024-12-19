@@ -3,27 +3,33 @@ using System;
 
 public class AnswerChecker : MonoBehaviour
 {
-    public event Action OnCorrectAnswer;
-    public event Action OnWrongAnswer;
+    [SerializeField] private ParticleSystem starParticles;
+    private AnimationHandler animationHandler;
 
     private Sprite correctAnswer;
+
+    private void Awake()
+    {
+        animationHandler = GetComponent<AnimationHandler>();
+    }
 
     public void SetCorrectAnswer(Sprite answer)
     {
         correctAnswer = answer;
     }
 
-    public void CheckAnswer(CellController cell)
+    public bool CheckAnswer(CellController cell)
     {
-        if (cell != null && cell.GetSprite() == correctAnswer)
+        if (cell != null && cell.GetSprite().name == correctAnswer.name)
         {
-            Debug.Log("Correct");
-            OnCorrectAnswer?.Invoke();
+            animationHandler.Bounce(cell.transform);
+            starParticles.Play();
+            return true;
         }
         else
         {
-            Debug.Log("Incorrect");
-            OnWrongAnswer?.Invoke();
+            animationHandler.Shake(cell.transform);
+            return false;
         }
     }
 }
