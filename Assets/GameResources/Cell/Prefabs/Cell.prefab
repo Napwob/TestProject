@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6350371169844557492}
   - component: {fileID: 852491860214673956}
   - component: {fileID: 6239693810180605638}
+  - component: {fileID: 465813966227613607}
   - component: {fileID: 2970226183601457963}
   m_Layer: 5
   m_Name: Cell
@@ -91,6 +92,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 4773976480462921913}
+--- !u!114 &465813966227613607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086314982783507803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdcaec1b3e10504987a7f362b9e8640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 4773976480462921913}
+  needToRotate: 1
+  rotationAngle: -90
+  spriteNamesToRotate:
+  - 7
+  - 8
 --- !u!114 &2970226183601457963
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,7 +37,6 @@ namespace AmayaSoft.Grid
 
                     GameObject cell = cellPool.GetPooledObject();
                     cell.transform.SetParent(gridParent, false);
-                    cell.SetActive(true);
 
                     RectTransform rectTransform = cell.GetComponent<RectTransform>();
                     rectTransform.anchoredPosition = new Vector2(
@@ -51,6 +50,7 @@ namespace AmayaSoft.Grid
 
                     CellController cellController = cell.GetComponent<CellController>();
                     cellController.Setup(sprite, onCellClicked);
+                    cell.SetActive(true);
 
                     if (isInitialLoad)
                     {
