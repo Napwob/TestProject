@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95792cebf1e815d4dbb823eb59265bfe, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  rows: 0
-  columns: 0
-  allowedSpriteGroups: []
+  rows: 1
+  columns: 3
+  allowedSpriteGroups:
+  - {fileID: 11400000, guid: fac6b181235adff4eb1573d4b93e69f6, type: 2}

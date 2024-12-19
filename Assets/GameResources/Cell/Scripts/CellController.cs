@@ -3,17 +3,24 @@ using UnityEngine.UI;
 
 public class CellController : MonoBehaviour
 {
-    [SerializeField] private Image symbolImage; 
+    [SerializeField] private Image symbolImage;
+    private System.Action<CellController> onCellClicked;
     private Sprite cellData;
 
-    public void Setup(Sprite sprite)
+    public void Setup(Sprite sprite, System.Action<CellController> onClickAction)
     {
         cellData = sprite;
-        symbolImage.sprite = cellData;
+        symbolImage.sprite = sprite;
+        onCellClicked = onClickAction;
     }
 
-    public void OnCellClicked()
+    public Sprite GetSprite()
     {
-        Destroy(gameObject);
+        return cellData;
+    }
+
+    public void OnClick()
+    {
+        onCellClicked?.Invoke(this);
     }
 }
