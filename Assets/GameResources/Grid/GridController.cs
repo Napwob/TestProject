@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GridController : MonoBehaviour
 {
     [SerializeField] private Transform gridParent;
-    [SerializeField] private GameObjectPool cellPool;
+    [SerializeField] private ObjectPool cellPool;
     [SerializeField] private float cellSpacing = 10f;
     private AnimationHandler animationHandler;
 

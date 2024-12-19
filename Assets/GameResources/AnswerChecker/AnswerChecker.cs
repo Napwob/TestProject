@@ -1,9 +1,8 @@
 using UnityEngine;
-using System;
 
 public class AnswerChecker : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem starParticles;
+    [SerializeField] private UIParticles uiParticles;
     private AnimationHandler animationHandler;
 
     private Sprite correctAnswer;
@@ -23,7 +22,10 @@ public class AnswerChecker : MonoBehaviour
         if (cell != null && cell.GetSprite().name == correctAnswer.name)
         {
             animationHandler.Bounce(cell.transform);
-            starParticles.Play();
+
+            Vector2 cellPosition = cell.transform.localPosition;
+            uiParticles.SpawnParticles(cellPosition);
+
             return true;
         }
         else

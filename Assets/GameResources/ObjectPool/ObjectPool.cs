@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectPool : MonoBehaviour, IObjectPool<GameObject>
+public class ObjectPool : MonoBehaviour, IObjectPool<GameObject>
 {
-    [SerializeField, Range(1,8)] private int initialPoolSize;
+    [SerializeField, Range(1,15)] private int initialPoolSize;
     [SerializeField] private GameObject prefab;
     private List<GameObject> pool = new List<GameObject>();
 
@@ -40,3 +40,4 @@ public class GameObjectPool : MonoBehaviour, IObjectPool<GameObject>
         }
     }
 }
+
