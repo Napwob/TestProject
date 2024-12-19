@@ -13,6 +13,6 @@ namespace AmayaSoft.Level
 
         public int Rows { get { return rows; } }
         public int Columns { get { return columns; } }
-        public List<SpriteGroup> AllowedSpriteGroups => allowedSpriteGroups;
+        public IReadOnlyList<SpriteGroup> AllowedSpriteGroups => allowedSpriteGroups;
     }
 }

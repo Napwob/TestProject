@@ -6,6 +6,7 @@ namespace AmayaSoft.Cell
 
     public class AnswerChecker : MonoBehaviour
     {
+        [Header("Particles")]
         [SerializeField] private UIParticles uiParticles;
         private AnimationHandler animationHandler;
 

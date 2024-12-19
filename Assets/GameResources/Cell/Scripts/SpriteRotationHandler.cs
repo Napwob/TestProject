@@ -6,8 +6,10 @@ namespace AmayaSoft.Cell
 
     public class SpriteRotationHandler : MonoBehaviour
     {
+        [SerializeField] private bool needToRotate = false;
+
+        [Header("Image Settings")]
         [SerializeField] private Image targetImage;
-        [SerializeField] private bool needToRotate = false; 
         [SerializeField, Range(-180, 180)] private float rotationAngle = 0f;
         [SerializeField] private List<string> spriteNamesToRotate = new List<string>(); 
 

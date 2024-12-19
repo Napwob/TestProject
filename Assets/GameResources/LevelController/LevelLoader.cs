@@ -7,11 +7,16 @@ namespace AmayaSoft.Level
 
     public class LevelLoader : MonoBehaviour
     {
+        [Header("Levels")]
         [SerializeField] private List<LevelData> levels;
         [SerializeField] private LevelController levelController;
+
+        [Header("UI")]
         [SerializeField] private Text taskDisplay;
         [SerializeField] private Image fadeOverlay;
         [SerializeField] private GameObject restartButton;
+
+        [Header("Animation Handler")]
         private AnimationHandler animationHandler;
 
         private int currentLevelIndex;

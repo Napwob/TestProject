@@ -8,9 +8,14 @@ namespace AmayaSoft.Grid
 
     public class GridController : MonoBehaviour
     {
+        [Header("Grid Settings")]
         [SerializeField] private Transform gridParent;
-        [SerializeField] private ObjectPool cellPool;
         [SerializeField] private float cellSpacing = 10f;
+
+        [Header("Object Pool")]
+        [SerializeField] private ObjectPool cellPool;
+
+        [Header("Animation Handler")]
         [SerializeField] private AnimationHandler animationHandler;
 
         public List<Sprite> GenerateGrid(LevelData levelData, System.Action<CellController> onCellClicked, bool isInitialLoad = false)

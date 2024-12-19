@@ -5,6 +5,7 @@ namespace AmayaSoft.ObjectPools
 
     public class ObjectPool : MonoBehaviour, IObjectPool<GameObject>
     {
+        [Header("Pool Settings")]
         [SerializeField, Range(1, 15)] private int initialPoolSize;
         [SerializeField] private GameObject prefab;
         private List<GameObject> pool = new List<GameObject>();
