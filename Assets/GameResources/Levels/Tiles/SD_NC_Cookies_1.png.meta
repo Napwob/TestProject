@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_0
+      name: 1
       rect:
         serializedVersion: 2
         x: 5
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_1
+      name: 2
       rect:
         serializedVersion: 2
         x: 178
@@ -165,10 +165,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_2
+      name: 3
       rect:
         serializedVersion: 2
-        x: 460
+        x: 459
         y: 623
         width: 271
         height: 396
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_3
+      name: 5
       rect:
         serializedVersion: 2
         x: 746
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_4
+      name: 4
       rect:
         serializedVersion: 2
         x: 5
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_5
+      name: 6
       rect:
         serializedVersion: 2
         x: 313
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_6
+      name: 7
       rect:
         serializedVersion: 2
         x: 623
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_7
+      name: 8
       rect:
         serializedVersion: 2
         x: 623
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SD_NC_Cookies_1_0: -2021128083
-      SD_NC_Cookies_1_1: 2027847774
-      SD_NC_Cookies_1_2: -1857114039
-      SD_NC_Cookies_1_3: -1686556410
-      SD_NC_Cookies_1_4: -1302009144
-      SD_NC_Cookies_1_5: -57530063
-      SD_NC_Cookies_1_6: 1185203676
-      SD_NC_Cookies_1_7: 1305022273
+      1: -2021128083
+      2: 2027847774
+      3: -1857114039
+      4: -1302009144
+      5: -1686556410
+      6: -57530063
+      7: 1185203676
+      8: 1305022273
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
