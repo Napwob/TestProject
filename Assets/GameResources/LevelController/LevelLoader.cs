@@ -4,6 +4,7 @@ namespace AmayaSoft.Level
 	using System.Collections.Generic;
 	using UnityEngine.UI;
 	using AmayaSoft.DGAnimations;
+	using AmayaSoft.Cell;
 
 	public class LevelLoader : MonoBehaviour
 	{

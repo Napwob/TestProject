@@ -1,26 +1,29 @@
-using UnityEngine;
-using UnityEngine.UI;
-
-public class CellController : MonoBehaviour
+namespace AmayaSoft.Cell
 {
-    [SerializeField] private Image symbolImage;
-    private System.Action<CellController> onCellClicked;
-    private Sprite cellData;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    public void Setup(Sprite sprite, System.Action<CellController> onClickAction)
+    public class CellController : MonoBehaviour
     {
-        cellData = sprite;
-        symbolImage.sprite = sprite;
-        onCellClicked = onClickAction;
-    }
+        [SerializeField] private Image symbolImage;
+        private System.Action<CellController> onCellClicked;
+        private Sprite cellData;
 
-    public Sprite GetSprite()
-    {
-        return cellData;
-    }
+        public void Setup(Sprite sprite, System.Action<CellController> onClickAction)
+        {
+            cellData = sprite;
+            symbolImage.sprite = sprite;
+            onCellClicked = onClickAction;
+        }
 
-    public void OnClick()
-    {
-        onCellClicked?.Invoke(this);
+        public Sprite GetSprite()
+        {
+            return cellData;
+        }
+
+        public void OnClick()
+        {
+            onCellClicked?.Invoke(this);
+        }
     }
 }

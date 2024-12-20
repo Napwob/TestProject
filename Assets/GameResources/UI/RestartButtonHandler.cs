@@ -1,4 +1,4 @@
-namespace AmayaSoft.Uti
+namespace AmayaSoft.Utils
 {
 	using AmayaSoft.Level;
 	using UnityEngine;

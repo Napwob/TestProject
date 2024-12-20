@@ -1,4 +1,4 @@
-namespace AmayaSoft.Cell
+namespace AmayaSoft.Level
 {
 	using UnityEngine;
 	using System.Collections.Generic;
