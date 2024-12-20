@@ -16,3 +16,4 @@ MonoBehaviour:
   columns: 3
   allowedSpriteGroups:
   - {fileID: 11400000, guid: fac6b181235adff4eb1573d4b93e69f6, type: 2}
+  - {fileID: 11400000, guid: 07d312e3af3902144963c08b4637f507, type: 2}

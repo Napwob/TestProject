@@ -1,43 +1,43 @@
 namespace AmayaSoft.Cell
 {
-    using AmayaSoft.DGAnimations;
-    using AmayaSoft.Particles;
-    using UnityEngine;
+	using AmayaSoft.DGAnimations;
+	using AmayaSoft.Particles;
+	using UnityEngine;
 
-    public class AnswerChecker : MonoBehaviour
-    {
-        [Header("Particles")]
-        [SerializeField] private UIParticles uiParticles;
-        private AnimationHandler animationHandler;
+	public class AnswerChecker : MonoBehaviour
+	{
+		[Header("Particles")]
+		[SerializeField] private UIParticles uiParticles;
+		private AnimationHandler animationHandler;
 
-        private Sprite correctAnswer;
+		private Sprite correctAnswer;
 
-        private void Awake()
-        {
-            animationHandler = GetComponent<AnimationHandler>();
-        }
+		private void Awake()
+		{
+			animationHandler = GetComponent<AnimationHandler>();
+		}
 
-        public void SetCorrectAnswer(Sprite answer)
-        {
-            correctAnswer = answer;
-        }
+		public void SetCorrectAnswer(Sprite answer)
+		{
+			correctAnswer = answer;
+		}
 
-        public bool CheckAnswer(CellController cell)
-        {
-            if (cell != null && cell.GetSprite().name == correctAnswer.name)
-            {
-                animationHandler.Bounce(cell.transform);
+		public bool CheckAnswer(CellController cell)
+		{
+			if (cell != null && cell.GetSprite().name == correctAnswer.name)
+			{
+				animationHandler.Bounce(cell.transform);
 
-                Vector2 cellPosition = cell.transform.localPosition;
-                uiParticles.SpawnParticles(cellPosition);
+				Vector2 cellPosition = cell.transform.localPosition;
+				uiParticles.SpawnParticles(cellPosition);
 
-                return true;
-            }
-            else
-            {
-                animationHandler.Shake(cell.transform);
-                return false;
-            }
-        }
-    }
+				return true;
+			}
+			else
+			{
+				animationHandler.Shake(cell.transform);
+				return false;
+			}
+		}
+	}
 }
